@@ -1,0 +1,27 @@
+1. Create a simple parking application:
+Implement the following classes and more if needed
+     	class Parking
+           methods
+           - addMotoOnLastFreePlace
+           - takeLastMoto
+           - addMotoByPlaceNumber
+           - takeMotoByPlaceNumber
+           - clearGaragePlaces
+           - open
+           - close
+           - changeAddress
+           - showAllInGarage
+
+        class MotorCycle - simple class-holder with fields such as "model" , "plateNumber" etc
+
+
+
+  *** Think about how to make your parking more universal so that you can park any kind of vehicle
+       abstract class Vehicle , concrete classes : Motorcycle, Car
+
+(abstract class) Vehicle
+          /      \
+    Motorcycle      Car
+
+2. Fill and submit the form http://derp-bear.herokuapp.com/forms/basic_form_example using Webdriver
+
