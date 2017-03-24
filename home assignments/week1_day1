@@ -1,0 +1,50 @@
+0. MANDATORY :
+a) Install the latest version of JDK 1.8
+ http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html
+b) Install Intellij Idea (community version would be enough) https://www.jetbrains.com/idea/#chooseYourEdition
+c) Install Git and create an account on GitHub.
+d) Install Maven. ( tutorial for windows users --> https://www.mkyong.com/maven/how-to-install-maven-in-windows/ )
+
+1. Create a simple contact list application.
+The code should be pushed to your remote GitHub repository.
+ A user should be able to :
+
+        - addContact
+        - removeLast
+        - findContact
+        - removeContact
+
+        -*updateContactInfo  ( optional)
+
+        - showAllContacts
+
+        - showFirstFiveContacts
+        - showLastFiveContacts
+
+        - showLifeContacts
+        - showKievstarContacts
+
+        // optional
+        (name must be unique in contact list)
+        before adding do validation
+        user can put wrong info like that
+            7sdf463dfg276
+        before saving check all symbols
+
+
+
+2. Write about 20-30 css/xpath selectors for Amazon.com using different types of selectors and save them to a file.
+	The format should be as follows:
+	 //Amazon main page :
+	 searchButton = css("#searchButton")/xpath("button[@class='searchButton']");
+	 singInButton = css("#nav-signin-tooltip span");
+
+
+3. Complete 3-4 chapters of the given course http://discover-devtools.codeschool.com/  -- Optional. For those who aren't familiar with Chrome Dev Tools
+
+4. Series of Git tutorials : https://www.youtube.com/playlist?list=PLIU76b8Cjem5B3sufBJ_KFTpKkMEvaTQR
+
+
+5. Tutorial on selectors https://www.youtube.com/watch?v=ahhaMbjqrxM
+
+6. Presentations showed in class  --> https://drive.google.com/open?id=0B3qWU9WyKuh8TmdQTjlFXzh5TU0
