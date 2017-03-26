@@ -101,4 +101,15 @@ public class ContactBook {
         }
         return sb.toString();
     }
+
+    public String showFirstFiveContactsWithStringBuilder() {
+
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < 5; i++) {
+            Contact contact = this.contacts.get(i);
+            sb.append(contact);
+        }
+        return sb.toString();
+    }
 }
