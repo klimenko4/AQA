@@ -9,8 +9,9 @@ package ua.kiev.prog.week1.parking;
  * classes Car, Motorbike just hold data: model, plateNum
  */
 
+// should be abstract since creating an instance of Vehicle type makes no sense
 
-public class Vehicle {
+public abstract class Vehicle {
     protected String model;
     protected String plateNum;
 
@@ -29,7 +30,7 @@ public class Vehicle {
 
     @Override
     public String toString() {
-        return this.getClass().getName() + ":" +
+        return "Vehicle{" +
                 "model='" + model + '\'' +
                 ", plateNum='" + plateNum + '\'' +
                 '}';
