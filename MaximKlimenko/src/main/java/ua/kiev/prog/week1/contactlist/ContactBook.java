@@ -4,13 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.function.Predicate;
+
+import static java.util.stream.Collectors.toList;
+import static ua.kiev.prog.week1.contactlist.MobOperatorPrefixes.*;
 
 public class ContactBook {
     // code to interface , so that you could change an implementation in the future ;
     // List - interface , implementations - LinkedList , ArrayList ;
 
     // private ArrayList<Contact> contacts = new ArrayList<Contact>();
-    private List<Contact> contacts = new ArrayList<>();
+    private final List<Contact> contacts;
 
 /*    public void addContact(Contact contact) {
         Objects.requireNonNull(contact);
@@ -20,6 +24,13 @@ public class ContactBook {
     //  addContact can return a boolean type  --> it's good of terms of unit testing
 
 
+    public ContactBook(List<Contact> contacts) {
+        this.contacts = contacts;
+    }
+
+    public ContactBook() {
+        contacts = new ArrayList<>();
+    }
 
     public boolean addContact(Contact contact) {
 
@@ -52,9 +63,9 @@ public class ContactBook {
 
         for (Contact contact : contacts) {
             if (contact.getContactName().contains(name)) {
-                System.out.println(contact);
+                //   System.out.println(contact);
+                return contact;
             }
-            return contact;
         }
         return null;
     }
@@ -88,7 +99,7 @@ public class ContactBook {
         return contact;
     }
 */
-        for(Contact contact : contacts){
+        for (Contact contact : contacts) {
             // once contact is passed on to System.out.println , toString method is called on the contact object under the hood( automatically)
             System.out.println(contact);
         }
@@ -100,7 +111,7 @@ public class ContactBook {
 
         StringBuilder sb = new StringBuilder();
 
-        for(Contact contact : contacts){
+        for (Contact contact : contacts) {
             sb.append(contact);
         }
         return sb.toString();
@@ -108,7 +119,7 @@ public class ContactBook {
 
     public void showFirstFiveContacts() {
 
-        if (contacts.size()<5) {
+        if (contacts.size() < 5) {
             showAllContacts();
         } else {
             for (int i = 0; i < 5; i++) {
@@ -120,34 +131,70 @@ public class ContactBook {
     }
 
     public void showLastFiveContacts() {
-        if (contacts.size()<5) {
+        if (contacts.size() < 5) {
             showAllContacts();
         } else {
-            for (int i = contacts.size()-5; i < contacts.size(); i++) {
+            for (int i = contacts.size() - 5; i < contacts.size(); i++) {
                 Contact contact = contacts.get(i);
                 System.out.println(contact);
             }
         }
     }
 
-    public void updateContactInfo(String contactName,String newContactName, String newNumber){
+    public void updateContactInfo(String contactName, String newContactName, String newNumber) {
         Contact contact = findContactByName(contactName);
         contact.setContactName(newContactName);
         contact.setNumber(newNumber);
     }
 
-    public void showLifeContacts () {
+    public void showLifeContacts() {
         for (Contact contact : contacts) {
             if (contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")) {
                 System.out.println(contact);
             }
         }
     }
-    public void showKievstarContacts () {
+
+//    public void showKievstarContacts() {
+//        for (Contact contact : contacts) {
+//            if (contact.getNumber().startsWith("067") || contact.getNumber().startsWith("097") || contact.getNumber().startsWith("096")) {
+//                System.out.println(contact);
+//            }
+//        }
+//    }
+
+
+    public List<Contact> getKievstarContacts() {
+        List<Contact> kievstars = new ArrayList<>();
+
         for (Contact contact : contacts) {
-            if (contact.getNumber().startsWith("067")||contact.getNumber().startsWith("097")||contact.getNumber().startsWith("096")){
-                System.out.println(contact);
+            if (contact.getNumber().startsWith("067") || contact.getNumber().startsWith("097") || contact.getNumber().startsWith("096")) {
+                kievstars.add(contact);
             }
         }
+        return kievstars;
+    }
+
+
+    // moved mobile operator prefixes to separate class with constants ( can be done using enum as well)
+    public List<Contact> getLifeAndKiyvstarContactsJava8() {
+
+//        return contacts.stream().
+//                filter(contact -> contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")).
+//                collect(toList());
+
+
+        //more verbose version
+        // could be "c" instead of "contact"
+        // Predicate is function that takes a Contact as an input and check it against a given condition ( similar to what predicate is in SQL)
+        Predicate<Contact> isLifeNumber = contact -> contact.getNumber().startsWith(LIFE_063) || contact.getNumber().startsWith(LIFE_093);
+        Predicate<Contact> isKiyvstarNumber = contact -> contact.getNumber().startsWith(KIYSTAR_067) ||
+                contact.getNumber().startsWith(KIYSTAR_096)
+                || contact.getNumber().startsWith(KIYSTAR_097);
+
+        return contacts.stream().
+                filter(isLifeNumber.or(isKiyvstarNumber)).
+                collect(toList());
+
     }
 }
