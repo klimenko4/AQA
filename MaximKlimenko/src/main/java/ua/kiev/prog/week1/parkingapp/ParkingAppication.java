@@ -9,7 +9,7 @@ public class ParkingAppication {
 
         Parking parking = new Parking();
         parking.open();
-        parking.WeAreOpened();
+//        parking.WeAreOpened();
 
     }
 
