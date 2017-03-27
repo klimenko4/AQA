@@ -20,6 +20,7 @@ public class ContactBook {
     //  addContact can return a boolean type  --> it's good of terms of unit testing
 
 
+
     public boolean addContact(Contact contact) {
 
         if (Objects.nonNull(contact)) {
@@ -27,6 +28,11 @@ public class ContactBook {
             return true;
         }
         return false;
+    }
+
+    public int getSize() {
+        System.out.println(this.contacts.size());
+        return this.contacts.size();
     }
 
     // Code to interface  --> what means return a broader type ( interface) , rather than a concrete implementation ;
@@ -102,14 +108,27 @@ public class ContactBook {
         return sb.toString();
     }
 
-    public String showFirstFiveContactsWithStringBuilder() {
+    public void showFirstFiveContacts() {
 
-        StringBuilder sb = new StringBuilder();
-
-        for (int i = 0; i < 5; i++) {
-            Contact contact = this.contacts.get(i);
-            sb.append(contact);
+        if (contacts.size()<5) {
+            showAllContacts();
+        } else {
+            for (int i = 0; i < 5; i++) {
+                Contact contact = contacts.get(i);
+                System.out.println(contact);
+            }
         }
-        return sb.toString();
+
+    }
+
+    public void showLastFiveContacts() {
+        if (contacts.size()<5) {
+            showAllContacts();
+        } else {
+            for (int i = contacts.size()-5; i < contacts.size(); i++) {
+                Contact contact = contacts.get(i);
+                System.out.println(contact);
+            }
+        }
     }
 }
