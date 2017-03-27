@@ -8,6 +8,7 @@ import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
 import static ua.kiev.prog.week1.contactlist.MobOperatorPrefixes.*;
+import static ua.kiev.prog.week1.contactlist.MobileOperatorPrefixes.*;
 
 public class ContactBook {
     // code to interface , so that you could change an implementation in the future ;
@@ -164,11 +165,13 @@ public class ContactBook {
 //    }
 
 
+    //Using Enum - MobileOperatorPrefixes
     public List<Contact> getKievstarContacts() {
         List<Contact> kievstars = new ArrayList<>();
 
         for (Contact contact : contacts) {
-            if (contact.getNumber().startsWith("067") || contact.getNumber().startsWith("097") || contact.getNumber().startsWith("096")) {
+            if (contact.getNumber().startsWith(KIEVSTAR_067.getPrefix()) || contact.getNumber().startsWith(KIEVSTAR_097.getPrefix())
+                    || contact.getNumber().startsWith(KIEVSTAR_096.getPrefix())) {
                 kievstars.add(contact);
             }
         }
