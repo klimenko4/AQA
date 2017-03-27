@@ -30,11 +30,6 @@ public class ContactBook {
         return false;
     }
 
-    public int getSize() {
-        System.out.println(this.contacts.size());
-        return this.contacts.size();
-    }
-
     // Code to interface  --> what means return a broader type ( interface) , rather than a concrete implementation ;
     //public List<Contact> getContacts()
     public List<Contact> getContacts() {
@@ -56,7 +51,10 @@ public class ContactBook {
     public Contact findContactByName(String name) {
 
         for (Contact contact : contacts) {
-            if (contact.getContactName().equals(name)) return contact;
+            if (contact.getContactName().contains(name)) {
+                System.out.println(contact);
+            }
+            return contact;
         }
         return null;
     }
@@ -127,6 +125,27 @@ public class ContactBook {
         } else {
             for (int i = contacts.size()-5; i < contacts.size(); i++) {
                 Contact contact = contacts.get(i);
+                System.out.println(contact);
+            }
+        }
+    }
+
+    public void updateContactInfo(String contactName,String newContactName, String newNumber){
+        Contact contact = findContactByName(contactName);
+        contact.setContactName(newContactName);
+        contact.setNumber(newNumber);
+    }
+
+    public void showLifeContacts () {
+        for (Contact contact : contacts) {
+            if (contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")) {
+                System.out.println(contact);
+            }
+        }
+    }
+    public void showKievstarContacts () {
+        for (Contact contact : contacts) {
+            if (contact.getNumber().startsWith("067")||contact.getNumber().startsWith("097")||contact.getNumber().startsWith("096")){
                 System.out.println(contact);
             }
         }
