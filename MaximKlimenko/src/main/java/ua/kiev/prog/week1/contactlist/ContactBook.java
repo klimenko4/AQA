@@ -20,6 +20,7 @@ public class ContactBook {
     //  addContact can return a boolean type  --> it's good of terms of unit testing
 
 
+
     public boolean addContact(Contact contact) {
 
         if (Objects.nonNull(contact)) {
@@ -50,7 +51,10 @@ public class ContactBook {
     public Contact findContactByName(String name) {
 
         for (Contact contact : contacts) {
-            if (contact.getContactName().equals(name)) return contact;
+            if (contact.getContactName().contains(name)) {
+                System.out.println(contact);
+            }
+            return contact;
         }
         return null;
     }
@@ -100,5 +104,50 @@ public class ContactBook {
             sb.append(contact);
         }
         return sb.toString();
+    }
+
+    public void showFirstFiveContacts() {
+
+        if (contacts.size()<5) {
+            showAllContacts();
+        } else {
+            for (int i = 0; i < 5; i++) {
+                Contact contact = contacts.get(i);
+                System.out.println(contact);
+            }
+        }
+
+    }
+
+    public void showLastFiveContacts() {
+        if (contacts.size()<5) {
+            showAllContacts();
+        } else {
+            for (int i = contacts.size()-5; i < contacts.size(); i++) {
+                Contact contact = contacts.get(i);
+                System.out.println(contact);
+            }
+        }
+    }
+
+    public void updateContactInfo(String contactName,String newContactName, String newNumber){
+        Contact contact = findContactByName(contactName);
+        contact.setContactName(newContactName);
+        contact.setNumber(newNumber);
+    }
+
+    public void showLifeContacts () {
+        for (Contact contact : contacts) {
+            if (contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")) {
+                System.out.println(contact);
+            }
+        }
+    }
+    public void showKievstarContacts () {
+        for (Contact contact : contacts) {
+            if (contact.getNumber().startsWith("067")||contact.getNumber().startsWith("097")||contact.getNumber().startsWith("096")){
+                System.out.println(contact);
+            }
+        }
     }
 }
