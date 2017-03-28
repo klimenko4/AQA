@@ -8,8 +8,6 @@ public class ParkingAppication {
         MotorCycle cycle1 = new MotorCycle("4422", "bugatti", "Peter Blood");
 
         Parking parking = new Parking();
-        parking.open();
-//        parking.WeAreOpened();
 
     }
 
