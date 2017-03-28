@@ -1,35 +1,20 @@
 package ua.kiev.prog.week1;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Select;
+import ua.kiev.prog.week1.fixtures.BaseTest;
 
 import java.util.List;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class WebDriverExampleTest {
+public class WebDriverExampleTest extends BaseTest {
 
-    static WebDriver driver;
-    static WebDriverWait wait;
-
-    @BeforeClass
-    public static void beforeAll() {
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
-        //System.setProperty("webdriver.gecko.driver", "driver/geckodriver.exe");
-
-        driver = new ChromeDriver();
-
-        driver.manage().window().maximize();
-        //driver.manage().window().setSize(new Dimension(1024, 768));
-        wait = new WebDriverWait(driver, 4);
-
-    }
 
     @Test
     public void testGitHub() {
@@ -108,10 +93,34 @@ public class WebDriverExampleTest {
                 "arguments[0].removeAttribute('readonly','readonly')", driver.findElement(By.cssSelector("#read_only_text_area")));
     }
 
+    @Test
+    public void rozetkaTest() {
 
-/*    @After
-    public void tearDown() throws Exception {
-        driver.quit();
-    }*/
+
+        driver.get("http://rozetka.com.ua/");
+        WebElement element = driver.findElement(By.xpath(".//*[contains(text(),'Смартфоны, ТВ и электроника')]/.."));
+
+        Actions action = new Actions(driver);
+        action.moveToElement(element).click().doubleClick().clickAndHold().
+                build().perform();
+        FluentWait wait1 = new FluentWait(driver)
+                .withTimeout(30, SECONDS)
+                .pollingEvery(5, SECONDS)
+                .ignoring(NoSuchElementException.class);
+
+        wait1.until(ExpectedConditions.titleIs("sdfsd"));
+        driver.manage().addCookie(new Cookie("key","value"));
+
+    }
+
+    @Test
+    public void select() {
+        Select select = new Select(driver.findElement(By.id("")));
+    }
+
+    //    @After
+//    public void tearDown() throws Exception {
+//        driver.quit();
+//    }
 }
 
