@@ -1,7 +1,9 @@
 package ua.kiev.prog.week1;
 
+import ua.kiev.prog.week1.fixtures.BaseTest;
+
 // Example of using Selenide library
-public class WikiTest {
+public class WikiTest extends BaseTest {
 
 /*
 
