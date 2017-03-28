@@ -6,23 +6,41 @@ import org.openqa.selenium.interactions.Actions;
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.id;
 
-public class FormPage {
+
+//extends abstract BasePage
+public class FormPage extends BasePage {
 
 
-    private WebDriver driver;
+
+    @Override
+    public String getURL() {
+        return null;
+    }
 
     public FormPage(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
     }
 
     public FormPage open() {
+
+        //actions;
         driver.get("http://derp-bear.herokuapp.com/forms/basic_form_example");
+
         return this;
+
+        // FormPage page = new FormPage();
+        // page.open() => page.enterName =>
+        // page.open();
+        // page.enter();
+
+
     }
 
 
     public FormPage enterFirstName(String name) {
+
         driver.findElement(cssSelector("#first_name")).sendKeys(name);
+
         return this;
     }
 
@@ -44,9 +62,17 @@ public class FormPage {
         return this;
     }
 
+   // page.selectPet()
+    //String.format(template,holder);
+    //
+    // void printName(String name){
+       // String.format("my name %d", name);
+    // sout(
 
+    //
     public FormPage selectPet(Pets pet) {
         driver.findElement(cssSelector("button#pet_select")).click();
+
 
         new Actions(driver).
                 moveToElement(driver.findElement(cssSelector(String.format("li[rel='%d']", pet.ordinal())))).
@@ -68,6 +94,7 @@ public class FormPage {
     }
 
     public FormPage selectCommutingType(CommutingType type) {
+
         driver.findElement(cssSelector(String.format("label[for='%s']", type.name().toLowerCase()))).click();
         return this;
     }

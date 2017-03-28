@@ -13,6 +13,7 @@ public class FormPageWithBys {
     private static final String URL = "http://derp-bear.herokuapp.com/forms/basic_form_example";
     private WebDriver driver;
 
+
     private final By byName = By.id("first_name");
     private final By byLastName = By.id("last_name");
     private final By byEmail = By.id("email");
@@ -28,7 +29,7 @@ public class FormPageWithBys {
 
 
     public FormPageWithBys enterFirstName(String name) {
-        driver.findElement(byName).sendKeys(name);
+        driver.findElement(byLastName).sendKeys(name);
         return this;
     }
 

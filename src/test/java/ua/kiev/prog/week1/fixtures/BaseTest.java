@@ -1,5 +1,6 @@
 package ua.kiev.prog.week1.fixtures;
 
+import org.junit.After;
 import org.junit.BeforeClass;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -25,4 +26,8 @@ public class BaseTest {
     }
 
 
+    @After
+    public void tearDown() throws Exception {
+        driver.quit();
+    }
 }

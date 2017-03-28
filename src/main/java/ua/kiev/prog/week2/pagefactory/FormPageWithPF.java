@@ -5,46 +5,39 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
+import ua.kiev.prog.week2.pageobject.BasePage;
 import ua.kiev.prog.week2.pageobject.CommutingType;
 import ua.kiev.prog.week2.pageobject.Pets;
 import ua.kiev.prog.week2.pageobject.ResultPage;
 
+import java.util.List;
+
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.By.id;
 
-public class FormPageWithPF {
-
-
-    private static final String URL = "http://derp-bear.herokuapp.com/forms/basic_form_example";
-    private WebDriver driver;
+public class FormPageWithPF extends BasePage {
 
     @FindBy(id = "first_name")
     private WebElement nameField;
 
-    //Page Factory search by id and name by default;
     private WebElement last_name;
 
-    @FindBy(id = "email")
+    @FindBy(css = "#email")
     @CacheLookup
     private WebElement emailField;
 
+    @FindBy(className = ".class")
+    List<WebElement> webElements;
+
     public FormPageWithPF(WebDriver driver) {
-        this.driver = driver;
-        PageFactory.initElements(driver, this);
+        super(driver);
+        URL = "http://derp-bear.herokuapp.com/forms/basic_form_example";
     }
-
-    public FormPageWithPF open() {
-        driver.get(URL);
-        return this;
-    }
-
 
     public FormPageWithPF enterFirstName(String name) {
         nameField.sendKeys(name);
         return this;
     }
-
 
     public FormPageWithPF enterLastName(String lastName) {
 
@@ -52,18 +45,15 @@ public class FormPageWithPF {
         return this;
     }
 
-
     public FormPageWithPF enterEmail(String email) {
         emailField.sendKeys(email);
         return this;
     }
 
-
     public FormPageWithPF enterWebsiteUrl(String url) {
         driver.findElement(cssSelector("#website_url")).sendKeys(url);
         return this;
     }
-
 
     public FormPageWithPF selectPet(Pets pet) {
         driver.findElement(cssSelector("button#pet_select")).click();
@@ -81,7 +71,6 @@ public class FormPageWithPF {
         return this;
     }
 
-
     public FormPageWithPF selectSex(String sex) {
         driver.findElement(cssSelector(String.format("label[for='%s']", sex))).click();
         return this;
@@ -95,5 +84,10 @@ public class FormPageWithPF {
     public ResultPage submit() {
         driver.findElement(id("submit_button")).click();
         return new ResultPage(driver);
+    }
+
+    @Override
+    public String getURL() {
+        return URL;
     }
 }

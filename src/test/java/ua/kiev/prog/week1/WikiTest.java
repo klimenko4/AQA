@@ -23,6 +23,14 @@ public class WikiTest extends BaseTest {
         String header = $("#firstHeading").text();
 
         Assert.assertEquals("Wrong article header","Java",header);
+
+
+        page.open().
+                enterName(,,).
+
+                page.open();
+                page.enterName();
+
     }
 
 */

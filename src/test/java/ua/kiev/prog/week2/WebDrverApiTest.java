@@ -6,7 +6,6 @@ import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.kiev.prog.week1.fixtures.BaseTest;
 
 import java.util.Set;
@@ -15,6 +14,7 @@ public class WebDrverApiTest extends BaseTest {
 
     @Test
     public void testWindowHandles() throws Exception {
+
         driver.get("https://users.wix.com/signin");
 
         String originalWindow = driver.getWindowHandle();
@@ -22,7 +22,7 @@ public class WebDrverApiTest extends BaseTest {
 
         driver.findElement(By.cssSelector("button.signin-sozial-fazebook")).click();
 
-        String newWindow = (new WebDriverWait(driver, 10))
+        String newWindow = wait
                 .until((ExpectedCondition<String>) driver -> {
                             Set<String> newWindowsSet = driver.getWindowHandles();
                             newWindowsSet.removeAll(oldWindowsSet);
@@ -43,9 +43,12 @@ public class WebDrverApiTest extends BaseTest {
 
     @Test
     public void testJSAlerts() throws Exception {
+
         driver.get("http://the-internet.herokuapp.com/javascript_alerts");
+
         driver.findElement(By.cssSelector("#content li:nth-child(1)>button")).click();
         Alert alert = driver.switchTo().alert();
+
         Thread.sleep(1000);
         //alert.accept();
         alert.dismiss();
