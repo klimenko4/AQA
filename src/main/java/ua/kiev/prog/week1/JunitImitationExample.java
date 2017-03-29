@@ -17,6 +17,7 @@ public class JunitImitationExample {
 
     // Entry point
     public static void main(String[] args) {
+
         beforeAll();
         test1();
         test2();
@@ -27,7 +28,7 @@ public class JunitImitationExample {
     private static void beforeAll() {
 
         // setting path to  chromedriver
-        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
 
         //Setting webdriver which represents a real browser
         driver = new ChromeDriver();

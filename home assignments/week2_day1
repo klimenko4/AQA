@@ -1,0 +1,31 @@
+
+Study materials:
+
+1) page object pattern:
+
+http://internetka.in.ua/selenium-page-object/
+http://internetka.in.ua/ajaxelementlocatorfactory/
+https://martinfowler.com/bliki/PageObject.html
+
+video: https://www.youtube.com/watch?v=KCPI5JJNQTI&t=222s
+
+2) page factory:
+https://github.com/SeleniumHQ/selenium/wiki/PageFactory
+
+http://internetka.in.ua/selenium-fielddecorator/
+http://internetka.in.ua/selenium-fielddecorator-2/
+
+
+3) video week2_day1 :  https://youtu.be/FUOeH4680SU
+  additional lesson : https://youtu.be/v-dYb-R-SYQ
+
+
+
+Home assignments:
+1) Search for "iphone" on hotline.ua;
+2) Filter search result by price range
+3) Check that all results' prices are within the price range you selected (e.g  price range - between 2000 and 5000 uah ,    check that each result price are between 2000 and 5000 uah)
+4) (Optinal) Check that number of results are the same as numbers shown next to price range  ( e.g.   2000 - 5000 uah (4)) ->  you need to check that number of the filtered results is 4)
+
+The assignment should be done using Page Object / Page Factory pattern.
+
