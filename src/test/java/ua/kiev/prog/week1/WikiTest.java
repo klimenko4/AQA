@@ -1,7 +1,9 @@
 package ua.kiev.prog.week1;
 
+import ua.kiev.prog.week1.fixtures.BaseTest;
+
 // Example of using Selenide library
-public class WikiTest {
+public class WikiTest extends BaseTest {
 
 /*
 
@@ -21,6 +23,14 @@ public class WikiTest {
         String header = $("#firstHeading").text();
 
         Assert.assertEquals("Wrong article header","Java",header);
+
+
+        page.open().
+                enterName(,,).
+
+                page.open();
+                page.enterName();
+
     }
 
 */
