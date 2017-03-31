@@ -35,6 +35,9 @@ public class SubmitFormTest {
         WebElement dropdownMenu = wait.until(ExpectedConditions.visibilityOfElementLocated(By
                 .cssSelector(".btn-primary.open ul li:nth-child(2)")));
         dropdownMenu.click();
+        driver.findElement(By.id("date_of_birth")).sendKeys("02/02/2222");
+//        driver.findElement(By.id("")).
+
 
     }
 
