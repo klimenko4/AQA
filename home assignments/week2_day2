@@ -1,0 +1,21 @@
+Study materials:
+
+1)Read and try to repeat the examples from the following articles:
+http://www.mkyong.com/tutorials/junit-tutorials/
+
+Maven + JUnit + Hamcrest example
+JUnit – Basic annotation examples
+JUnit – Expected Exceptions Test
+JUnit – Ignore a Test
+JUnit – Timeout Test
+JUnit – Suite Test, run multiple test cases
+JUnit – Parameterized Test
+JUnit – Categories Test
+JUnit – Run test in a particular order
+JUnit - assumptions : https://github.com/junit-team/junit4/wiki/Assumptions-with-assume
+http://devcolibri.com/864
+
+Junit Rules -> http://blog.qatools.ru/junit/junit-rules-tutorial
+
+https://www.youtube.com/watch?v=QJZb1fNYh9c&t=654s
+

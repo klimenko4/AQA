@@ -108,7 +108,8 @@ public class WebDriverTest {
 
     @AfterClass
     public static void tearDown() throws Exception {
-        //driver.quit();
+        //driver.quit();  - закрывает само окно браузера
+        //driver.close(); - закрывает вкладку
     }
 
 
