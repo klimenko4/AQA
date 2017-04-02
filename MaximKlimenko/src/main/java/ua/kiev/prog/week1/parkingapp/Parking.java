@@ -20,7 +20,7 @@ public class Parking {
     }
 
     public boolean isOpen() {
-        return parkingStatus == true;
+        return parkingStatus;
     }
 
     public void status() {
