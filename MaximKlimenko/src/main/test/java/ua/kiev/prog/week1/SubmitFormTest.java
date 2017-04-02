@@ -1,5 +1,6 @@
 package ua.kiev.prog.week1;
 
+import io.github.bonigarcia.wdm.ChromeDriverManager;
 import org.junit.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -19,7 +20,7 @@ public class SubmitFormTest {
 
     @BeforeClass
     public static void beforeAll() {
-        System.setProperty("webdriver.chrome.driver", "D:\\projects\\AQA\\drivers\\chromedriver.exe");
+        ChromeDriverManager.getInstance().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         wait = new WebDriverWait(driver, 4);
@@ -65,7 +66,7 @@ public class SubmitFormTest {
 
     @After
     public void tearDown() {
-//        driver.quit();
+        driver.quit();
 
     }
 }
