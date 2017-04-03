@@ -27,8 +27,8 @@ public class ContactBookApplication {
 //        System.out.println("Show First Five");
 //        contactBook.showFirstFiveContacts();
 
-//        System.out.println("Show Last Five");
-//        contactBook.showLastFiveContacts();
+        System.out.println("Show Last Five");
+        contactBook.showLastFiveContacts();
 
         contactBook.findContactByName("James");
      //   contactBook.removeLast();

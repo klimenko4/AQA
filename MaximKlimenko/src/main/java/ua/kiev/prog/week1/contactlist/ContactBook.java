@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.function.Predicate;
 
 import static java.util.stream.Collectors.toList;
-import static ua.kiev.prog.week1.contactlist.MobOperatorPrefixes.*;
-import static ua.kiev.prog.week1.contactlist.MobileOperatorPrefixes.*;
+//import static ua.kiev.prog.week1.contactlist.MobOperatorPrefixes.*;
+//import static ua.kiev.prog.week1.contactlist.MobileOperatorPrefixes.*;
 
 public class ContactBook {
     // code to interface , so that you could change an implementation in the future ;
@@ -165,39 +165,39 @@ public class ContactBook {
 //    }
 
 
-    //Using Enum - MobileOperatorPrefixes
-    public List<Contact> getKievstarContacts() {
-        List<Contact> kievstars = new ArrayList<>();
-
-        for (Contact contact : contacts) {
-            if (contact.getNumber().startsWith(KIEVSTAR_067.getPrefix()) || contact.getNumber().startsWith(KIEVSTAR_097.getPrefix())
-                    || contact.getNumber().startsWith(KIEVSTAR_096.getPrefix())) {
-                kievstars.add(contact);
-            }
-        }
-        return kievstars;
-    }
+//    //Using Enum - MobileOperatorPrefixes
+//    public List<Contact> getKievstarContacts() {
+//        List<Contact> kievstars = new ArrayList<>();
+//
+//        for (Contact contact : contacts) {
+//            if (contact.getNumber().startsWith(KIEVSTAR_067.getPrefix()) || contact.getNumber().startsWith(KIEVSTAR_097.getPrefix())
+//                    || contact.getNumber().startsWith(KIEVSTAR_096.getPrefix())) {
+//                kievstars.add(contact);
+//            }
+//        }
+//        return kievstars;
+//    }
 
 
     // moved mobile operator prefixes to separate class with constants ( can be done using enum as well)
-    public List<Contact> getLifeAndKiyvstarContactsJava8() {
-
+//    public List<Contact> getLifeAndKiyvstarContactsJava8() {
+//
+////        return contacts.stream().
+////                filter(contact -> contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")).
+////                collect(toList());
+//
+//
+//        //more verbose version
+//        // could be "c" instead of "contact"
+//        // Predicate is function that takes a Contact as an input and check it against a given condition ( similar to what predicate is in SQL)
+//        Predicate<Contact> isLifeNumber = contact -> contact.getNumber().startsWith(LIFE_063) || contact.getNumber().startsWith(LIFE_093);
+//        Predicate<Contact> isKiyvstarNumber = contact -> contact.getNumber().startsWith(KIYSTAR_067) ||
+//                contact.getNumber().startsWith(KIYSTAR_096)
+//                || contact.getNumber().startsWith(KIYSTAR_097);
+//
 //        return contacts.stream().
-//                filter(contact -> contact.getNumber().startsWith("063") || contact.getNumber().startsWith("093")).
+//                filter(isLifeNumber.or(isKiyvstarNumber)).
 //                collect(toList());
-
-
-        //more verbose version
-        // could be "c" instead of "contact"
-        // Predicate is function that takes a Contact as an input and check it against a given condition ( similar to what predicate is in SQL)
-        Predicate<Contact> isLifeNumber = contact -> contact.getNumber().startsWith(LIFE_063) || contact.getNumber().startsWith(LIFE_093);
-        Predicate<Contact> isKiyvstarNumber = contact -> contact.getNumber().startsWith(KIYSTAR_067) ||
-                contact.getNumber().startsWith(KIYSTAR_096)
-                || contact.getNumber().startsWith(KIYSTAR_097);
-
-        return contacts.stream().
-                filter(isLifeNumber.or(isKiyvstarNumber)).
-                collect(toList());
-
-    }
+//
+//    }
 }
