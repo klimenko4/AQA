@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Objects;
 
 public class Parking {
-    private Vehicle[] localParking = new Vehicle[10];
+    private Vehicle[] localParking;
 
     private boolean parkingStatus = false;
+
+    public Parking(int parkingSize){
+        localParking= new Vehicle[parkingSize];
+    }
 
     public void open() {
         this.parkingStatus = true;

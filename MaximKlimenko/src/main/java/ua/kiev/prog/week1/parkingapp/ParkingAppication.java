@@ -9,7 +9,7 @@ public class ParkingAppication {
         MotorCycle cycle2 = new MotorCycle("4422", "bugatti", "Peter Blood2");
         MotorCycle cycle3 = new MotorCycle("4422", "bugatti", "Peter Blood3");
 
-        Parking parking = new Parking();
+        Parking parking = new Parking(10);
 //        parking.status();
         parking.open();
 //        parking.status();
@@ -31,8 +31,8 @@ public class ParkingAppication {
 //        parking.removeVehicleByPlace(9);
 
 //        parking.takeLastVehicle();
-        parking.changeAddress(1,2);
-        parking.showParking();
+//        parking.changeAddress(1,2);
+//        parking.showParking();
         parking.close();
         parking.clearParking();
         System.out.println("");
