@@ -1,7 +1,5 @@
 package ua.kiev.prog.week2.hotline;
 
-import com.gargoylesoftware.htmlunit.Page;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,7 +11,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class MainPage {
     private WebDriver driver;
-    private  static final String url = "http://hotline.ua/";
+    private static final String url = "http://hotline.ua/";
 
     @FindBy(id = "searchbox")
     private WebElement searchField;
@@ -27,9 +25,8 @@ public class MainPage {
     }
 
     //put url to driver
-    public MainPage open () {
+    public MainPage open() {
         driver.get(url);
-        driver.manage().window().maximize();
         return this;
     }
 

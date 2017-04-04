@@ -1,15 +1,17 @@
 package ua.kiev.prog.week2.hotline;
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Zver on 30.03.2017.
@@ -21,9 +23,10 @@ public class SearchResultPage {
     private WebDriverWait wait;
 
     //Set for storing all applied PriceRanges
-    private Set<PriceRange> priceRangeList = new TreeSet<PriceRange>();
+    private Set<PriceRange> priceRangeList = new HashSet<>();
 
     //bottom blue toolbar, which hides price filters
+    // locator can be simple as css = ".blue-toolbar.bottom-position"
     @FindBy(xpath = "//*[@id=\"mm-0\"]/div[3]/div/div[1]/a[3]")
     private WebElement bottomToolbar;
 
@@ -41,37 +44,49 @@ public class SearchResultPage {
     }
 
     //return min price from priceRangeList
-    public int getMinPriceFromPriceRangeList() throws Exception {
+    public int getMinPriceFromPriceRangeList() {
         if (this.priceRangeList.isEmpty()) {
-            throw new Exception("Filter's list is empty, add one ore more PriceRanges");
+            throw new RuntimeException("Filter's list is empty, add one ore more PriceRanges");
         }
-        Iterator<PriceRange> iterator = this.getPriceRangeList().iterator();
-        int minPrice = iterator.next().getMinPrice();
-        while(iterator.hasNext()) {
-            PriceRange priceRange = iterator.next();
-            int minPriceFromPriceRange = priceRange.getMinPrice();
-            if (minPriceFromPriceRange < minPrice) {
-                minPrice = minPriceFromPriceRange;
+
+        int minPrice = Integer.MAX_VALUE;
+        int currentMin;
+
+        for (PriceRange priceRange : priceRangeList) {
+
+            currentMin = priceRange.getMinPrice();
+            if (currentMin < minPrice) {
+                minPrice = currentMin;
             }
         }
         return minPrice;
+
+        //if it wasn't a set of enum values , Collections.max() and .min() could be used
+
+        // java 8 - stream API
+    //    return priceRangeList.stream().map(PriceRange::getMinPrice).mapToInt(Integer::intValue).min().getAsInt();
     }
 
     //return min price from priceRangeList
-    public int getMaxPriceFromPriceRangeList() throws Exception {
+    // in this case better to throw runtime exception , not checked exception
+    public int getMaxPriceFromPriceRangeList() {
         if (this.priceRangeList.isEmpty()) {
-            throw new Exception("Filter's list is empty, add one ore more PriceRanges");
+            throw new RuntimeException("Filter's list is empty, add one ore more PriceRanges");
         }
-        Iterator<PriceRange> iterator = this.getPriceRangeList().iterator();
-        int maxPrice = iterator.next().getMaxPrice();
-        while(iterator.hasNext()) {
-            PriceRange priceRange = iterator.next();
-            int maxPriceFromPriceRange = priceRange.getMaxPrice();
-            if (maxPriceFromPriceRange > maxPrice) {
-                maxPrice = maxPriceFromPriceRange;
+
+ /*       int maxPrice = Integer.MIN_VALUE;
+        int currentMax;
+        for (PriceRange priceRange : priceRangeList) {
+
+            currentMax = priceRange.getMaxPrice();
+            if (currentMax > maxPrice) {
+                maxPrice = currentMax;
             }
         }
-        return maxPrice;
+        return maxPrice;*/
+
+        return priceRangeList.stream().map(PriceRange::getMinPrice).mapToInt(Integer::intValue).max().getAsInt();
+
     }
 
     //hide bottom toolbar
@@ -102,7 +117,7 @@ public class SearchResultPage {
     public List<Integer> getAllPricesInRange() {
         List<Integer> pricesIntegers = new ArrayList<Integer>();
         List<WebElement> pricesBlocks = driver.findElements(By.xpath("//div[@class='text-14 text-13-480 orng']/b"));
-        for (WebElement priceBlock: pricesBlocks) {
+        for (WebElement priceBlock : pricesBlocks) {
             String price = priceBlock.getText();
             int len = price.length();
             pricesIntegers.add(Integer.parseInt(removeWhitespacesFromStr(price.substring(0, len - 3))));
@@ -111,9 +126,9 @@ public class SearchResultPage {
     }
 
     //remove whitespaces
-    private String removeWhitespacesFromStr (String inputStr) {
+    private String removeWhitespacesFromStr(String inputStr) {
         String resultString = "";
-        for(int i = 0; i < inputStr.length(); i++) {
+        for (int i = 0; i < inputStr.length(); i++) {
             if (inputStr.charAt(i) != ' ') {
                 resultString += inputStr.charAt(i);
             }
