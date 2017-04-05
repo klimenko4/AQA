@@ -5,13 +5,13 @@ import org.testng.ITestClass;
 
 public class BeforeClassWebDriverProvider extends WebDriverProvider implements IClassListener {
 
-	@Override
-	public void onBeforeClass(ITestClass testClass) {
-		this.setupDriver();
-	}
+    @Override
+    public void onBeforeClass(ITestClass testClass) {
+        setupDriver();
+    }
 
-	@Override
-	public void onAfterClass(ITestClass testClass) {
-		this.cleanUp();
-	}
+    @Override
+    public void onAfterClass(ITestClass testClass) {
+        cleanUp();
+    }
 }

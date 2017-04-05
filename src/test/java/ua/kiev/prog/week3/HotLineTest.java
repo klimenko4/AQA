@@ -1,24 +1,22 @@
 package ua.kiev.prog.week3;
 
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import ua.kiev.prog.week3.enums.PriceRange;
 import ua.kiev.prog.week3.pageobject.HotlineMainPage;
 import ua.kiev.prog.week3.wrappers.BeforeClassWebDriverProvider;
+import ua.kiev.prog.week3.wrappers.WebDriverProvider;
 
 import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-@Listeners(BeforeClassWebDriverProvider.class)
 public class HotLineTest {
 
     private HotlineMainPage mainPage;
 
     @BeforeMethod
     public void setUp() throws Exception {
+        WebDriverProvider.setupDriver();
         mainPage = new HotlineMainPage();
     }
 
@@ -56,4 +54,10 @@ public class HotLineTest {
         assertTrue(prices.size() == resultsNum);
 
     }
+
+    @AfterMethod
+    public void tearDown() throws Exception {
+        WebDriverProvider.cleanUp();
+    }
+
 }
