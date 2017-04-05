@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+
+    <test name="case1">
+
+        <parameter name="character" value="A" />
+        <parameter name="ascii" value="65" />
+
+
+        <classes>
+            <class name="ua.kiev.prog.testngexamples.CharUtilsTest" />
+        </classes>
+    </test>
+
+</suite>

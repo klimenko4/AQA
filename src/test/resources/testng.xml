@@ -1,0 +1,11 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<!-- @BeforeSuite -->
+<suite name="TestAll">
+
+
+ <suite-files>
+	 <suite-file path="regressions.xml"/>
+ </suite-files>
+</suite>
+<!-- @AfterSuite -->
