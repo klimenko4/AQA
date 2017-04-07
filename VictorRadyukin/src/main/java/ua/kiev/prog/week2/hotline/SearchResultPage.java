@@ -27,7 +27,7 @@ public class SearchResultPage {
 
     //bottom blue toolbar, which hides price filters
     // locator can be simple as css = ".blue-toolbar.bottom-position"
-    @FindBy(xpath = "//*[@id=\"mm-0\"]/div[3]/div/div[1]/a[3]")
+    @FindBy(css = "a.hide")
     private WebElement bottomToolbar;
 
     //@FindBy (partialLinkText = "2500-3500")
@@ -35,7 +35,7 @@ public class SearchResultPage {
 
     SearchResultPage(WebDriver driver) {
         this.driver = driver;
-        this.wait = new WebDriverWait(driver, 20);
+        this.wait = new WebDriverWait(driver, 60);
         PageFactory.initElements(driver, this);
     }
 
@@ -48,19 +48,15 @@ public class SearchResultPage {
         if (this.priceRangeList.isEmpty()) {
             throw new RuntimeException("Filter's list is empty, add one ore more PriceRanges");
         }
-
         int minPrice = Integer.MAX_VALUE;
         int currentMin;
-
         for (PriceRange priceRange : priceRangeList) {
-
             currentMin = priceRange.getMinPrice();
             if (currentMin < minPrice) {
                 minPrice = currentMin;
             }
         }
         return minPrice;
-
         //if it wasn't a set of enum values , Collections.max() and .min() could be used
 
         // java 8 - stream API
@@ -73,19 +69,15 @@ public class SearchResultPage {
         if (this.priceRangeList.isEmpty()) {
             throw new RuntimeException("Filter's list is empty, add one ore more PriceRanges");
         }
-
- /*       int maxPrice = Integer.MIN_VALUE;
+        int maxPrice = Integer.MIN_VALUE;
         int currentMax;
         for (PriceRange priceRange : priceRangeList) {
-
             currentMax = priceRange.getMaxPrice();
             if (currentMax > maxPrice) {
                 maxPrice = currentMax;
             }
         }
-        return maxPrice;*/
-
-        return priceRangeList.stream().map(PriceRange::getMinPrice).mapToInt(Integer::intValue).max().getAsInt();
+        return maxPrice;
 
     }
 
@@ -101,14 +93,10 @@ public class SearchResultPage {
     public SearchResultPage selectPriceFilter(PriceRange priceRange) {
         //adding enum obj to total set of all applied price filters
         priceRangeList.add(priceRange);
+        wait.until(ExpectedConditions.elementToBeClickable(By.partialLinkText(priceRange.getRangeString())));
         //choose price range checkbox
-        try {
-            Thread.sleep(5000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
         checkbox = driver.findElement(By.partialLinkText(priceRange.getRangeString()));
-        wait.until(ExpectedConditions.elementToBeClickable(checkbox));
+        //wait.until(ExpectedConditions.elementToBeClickable(checkbox));
         checkbox.click();
         return this;
     }

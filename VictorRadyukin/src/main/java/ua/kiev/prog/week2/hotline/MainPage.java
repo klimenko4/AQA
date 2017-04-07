@@ -5,12 +5,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 /**
  * Created by Zver on 30.03.2017.
  */
-public class MainPage {
-    private WebDriver driver;
+public class MainPage extends BasePage {
     private static final String url = "http://hotline.ua/";
 
     @FindBy(id = "searchbox")
@@ -19,8 +20,11 @@ public class MainPage {
     @FindBy(id = "doSearch")
     private WebElement searchButton;
 
-    public MainPage(WebDriver driver) {
-        this.driver = driver;
+    @FindBy(css = "a.reg")
+    private WebElement registerLink;
+
+    public MainPage(WebDriver driver, WebDriverWait wait) {
+        super(driver, wait);
         PageFactory.initElements(driver, this);
     }
 
@@ -34,5 +38,11 @@ public class MainPage {
     public SearchResultPage search(String searchString) {
         searchField.sendKeys(searchString, Keys.ENTER);
         return new SearchResultPage(driver);
+    }
+
+    public RegisterNewUserPage goToRegisterNewUserPage() {
+        wait.until(ExpectedConditions.elementToBeClickable(registerLink));
+        registerLink.click();
+        return new RegisterNewUserPage(driver, wait);
     }
 }

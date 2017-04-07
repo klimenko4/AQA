@@ -30,5 +30,4 @@ public enum PriceRange  {
     public String getRangeString() {
         return rangeString;
     }
-
 }
