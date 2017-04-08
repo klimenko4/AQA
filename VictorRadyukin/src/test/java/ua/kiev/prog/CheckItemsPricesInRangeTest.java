@@ -1,9 +1,11 @@
 package ua.kiev.prog;
 
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import ua.kiev.prog.week2.hotline.MainPage;
 import ua.kiev.prog.week2.hotline.PriceRange;
 import ua.kiev.prog.week2.hotline.SearchResultPage;
@@ -16,20 +18,22 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by Zver on 30.03.2017.
  */
-public class CheckPricesInRange {
+public class CheckItemsPricesInRangeTest {
 
     private static WebDriver driver;
+    private static WebDriverWait wait;
     private static MainPage mainPage;
 
     @BeforeClass
     public static void setUp() {
         // path to ChromeDriver binary file
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Khandozhynski\\IdeaProjects\\automationprog\\drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:/Users/Zver/IdeaProjects/AQA/drivers/chromedriver.exe");
         //initialize WebDriver
         driver = new ChromeDriver();
+        wait = new WebDriverWait(driver, 60);
         //initialize MainPage object
         driver.manage().window().maximize();
-        mainPage = new MainPage(driver);
+        mainPage = new MainPage(driver, wait);
     }
 
     @Test
@@ -46,15 +50,15 @@ public class CheckPricesInRange {
         //max price from all applied PriceRanges
         int maxFilterPrice = searchResultPage.getMaxPriceFromPriceRangeList();
 
-//        for (int price : prices) {
-//            System.out.println(price + ";");
-//        }
+        for (int price : prices) {
+            System.out.println(price + ";");
+        }
 
-//        for (int price : prices) {
-//            Assert.assertTrue("Price is out of range", (price >= minFilterPrice && price <= maxFilterPrice));
-//        }
-        prices.forEach(System.out::println);
-        prices.forEach(price -> assertTrue("Price is out of range", price >= minFilterPrice && price <= maxFilterPrice));
+        for (int price : prices) {
+            Assert.assertTrue("Price is out of range", (price >= minFilterPrice && price <= maxFilterPrice));
+        }
+        //prices.forEach(System.out::println);
+        //prices.forEach(price -> assertTrue("Price is out of range", price >= minFilterPrice && price <= maxFilterPrice));
 
     }
 }

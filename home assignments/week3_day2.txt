@@ -1,0 +1,9 @@
+1) Complete all the previous assignments;
+2) Create negative/positive(already registered,new user,wrong email format) tests for a registration of a new user on hotline.ua website.
+3) Use TestNG framework to run and configure tests. 
+4) Use the dataprovides to run registration tests with negative/positive test data.
+5) Group the registration tests into "registration" group and configure the testng suite xml to run only this group out of all the tests.
+e.g :
+  - SearchAndFilterProductsTest.java
+  - RegistrationAndSignInTest.java 
+  create a test section in  the testng suite xml to include both test classes but apply the filter on groups to run only "registration" test. 
