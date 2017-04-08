@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestAll">
+    <test name="registerNewUser">
+        <classes>
+            <class name="ua.kiev.prog.RegisterNewUserTest" />
+        </classes>
+    </test>
+</suite>
