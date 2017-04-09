@@ -1,18 +1,16 @@
 package ua.kiev.prog.week2.hotline;
 
 import io.github.bonigarcia.wdm.ChromeDriverManager;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-/**
- * Created by Maxim Klimenko on 06.04.2017.
- */
+import java.util.HashMap;
+
+
 public class CheckPriceInRangeTest {
 
     private static WebDriver driver;
@@ -27,15 +25,22 @@ public class CheckPriceInRangeTest {
         hotlineHomePage = new HotlineHomePage(driver, wait);
     }
 
+    PriceRanges range = PriceRanges.range_2500_3500;
+
     @Test
     public void itemPriceInRange() {
-        SearchResultsPage searchResultsPage = hotlineHomePage.openUrl().search("iphone");
+        SearchResultsPage searchResultsPage = hotlineHomePage.openUrl().search("iphone")
+                .closeStatistic()
+                .selectPriceFilter(range);
+        HashMap<Integer,Integer> prices = searchResultsPage.getAllpricesFromPage();
+        searchResultsPage.checkPrices(prices, range);
+
 
     }
 
     @After
-    public void tearDown()  {
-    driver.quit();
+    public void tearDown() {
+        driver.quit();
 
     }
 }
