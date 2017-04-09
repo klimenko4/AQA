@@ -57,7 +57,7 @@ public class MainPage extends BasePage {
         return new RegisterNewUserPage(driver, wait);
     }
 
-    public MainPage openSignInPopupWindow() {
+public MainPage openSignInPopupWindow() {
         wait.until(ExpectedConditions.elementToBeClickable(signInLink));
         signInLink.click();
         return this;
