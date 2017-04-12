@@ -14,6 +14,7 @@ import java.util.ArrayList;
  * Created by Zver on 07.04.2017.
  */
 public class RegisterNewUserPage extends BasePage {
+    public static final String TITLE_SUCCESS_REGISTRATION = "Завершение регистрации";
 
     @FindBy(id = "reg-form")
     private WebElement registerForm;
@@ -30,17 +31,30 @@ public class RegisterNewUserPage extends BasePage {
     @FindBy(id = "submit-button")
     private WebElement submitButton;
 
+    @FindBy(id = "error_email")
+    public WebElement emailErrorElement;
+
+    @FindBy(id = "error_nick")
+    public WebElement nickErrorElement;
+
+    @FindBy(id = "error_password")
+    public WebElement passwordErrorElement;
+
     public RegisterNewUserPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
         PageFactory.initElements(driver, this);
     }
 
-    public ConfirmSuccessRegistrationPage fillAndSubmitRegistrationForm(String newUserEmail, String newUserNick, String newUserPassword) {
+    public String getTitle() {
+        return driver.getTitle();
+    }
+
+    public RegisterNewUserPage fillAndSubmitRegistrationForm(String newUserEmail, String newUserNick, String newUserPassword) {
         wait.until(ExpectedConditions.visibilityOf(registerForm));
         email.sendKeys(newUserEmail);
         nick.sendKeys(newUserNick);
         password.sendKeys(newUserPassword);
         submitButton.click();
-        return new ConfirmSuccessRegistrationPage(driver, wait);
+        return this;
     }
 }
