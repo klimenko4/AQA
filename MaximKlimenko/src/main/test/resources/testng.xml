@@ -5,7 +5,11 @@
 
     <test name="case1">
 
-
+        <!--<groups>-->
+            <!--<run>-->
+                <!--<include name="registration"/>-->
+            <!--</run>-->
+        <!--</groups>-->
 
         <classes>
             <class name="ua.kiev.prog.week2.hotline.RegistrationAndSignInTest" />

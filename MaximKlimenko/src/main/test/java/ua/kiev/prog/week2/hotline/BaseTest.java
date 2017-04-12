@@ -25,10 +25,10 @@ public class BaseTest {
         hotlineHomePage.openUrl();
     }
 
-//    @AfterTest
-//    public void afterMethod() {
-//        driver.quit();
-//    }
+    @AfterTest
+    public void afterMethod() {
+        driver.quit();
+    }
 
 
 }
