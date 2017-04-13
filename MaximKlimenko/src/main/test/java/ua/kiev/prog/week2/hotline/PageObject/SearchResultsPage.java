@@ -1,4 +1,4 @@
-package ua.kiev.prog.week2.hotline;
+package ua.kiev.prog.week2.hotline.PageObject;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -7,28 +7,25 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ua.kiev.prog.week2.hotline.PriceRanges;
 
 import java.util.HashMap;
 import java.util.List;
 
 
-public class SearchResultsPage {
-
-    private WebDriver driver;
-    private WebDriverWait wait;
+public class SearchResultsPage extends BasePage{
 
 
-    SearchResultsPage(WebDriver driver) {
-        this.driver = driver;
-        this.wait = new WebDriverWait(driver, 10);
-        PageFactory.initElements(driver, this);
-    }
 
     @FindBy(css = ".link-turn.hide.g_statistic")
     WebElement hideStatisticButton;
 
     @FindBy(css = ".text-14.text-13-480.orng")
     WebElement allPrices;
+
+    public SearchResultsPage(WebDriver driver) {
+        super(driver);
+    }
 
     public SearchResultsPage closeStatistic() {
         hideStatisticButton.click();

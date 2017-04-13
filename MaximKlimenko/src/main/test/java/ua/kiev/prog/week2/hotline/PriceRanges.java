@@ -1,7 +1,7 @@
 package ua.kiev.prog.week2.hotline;
 
 public enum PriceRanges {
-    range_2500_3500(1,2500,3500);
+    RANGE_2500_3500(1,2500,3500);
 
     private final int index;
     private final int minPrice;

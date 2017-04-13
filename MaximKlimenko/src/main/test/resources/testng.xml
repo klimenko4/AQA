@@ -3,24 +3,25 @@
 <!-- @BeforeSuite -->
 <suite name="TestAll">
 
-    <!-- @BeforeTest -->
     <test name="case1">
-        <classes>
-            <class name="ua.kiev.prog.week3.TestConfiguration" />
-            <class name="ua.kiev.prog.week3.TestDBConnection" />
-            <class name="ua.kiev.prog.week3.DBConfig" />
-        </classes>
-    </test>
-    <!-- @AfterTest -->
 
-    <!-- @BeforeTest -->
-    <test name="case2">
+        <!--<groups>-->
+            <!--<run>-->
+                <!--<include name="registration"/>-->
+            <!--</run>-->
+        <!--</groups>-->
+
         <classes>
-            <class name="ua.kiev.prog.week3.TestDBConnection" />
-            <class name="ua.kiev.prog.week3.DBConfig" />
+            <class name="ua.kiev.prog.week2.hotline.RegistrationAndSignInTest" />
         </classes>
     </test>
-    <!-- @AfterTest -->
+
+    <!--<test name="checkPrice">-->
+        <!--<classes>-->
+            <!--<class name="ua.kiev.prog.week2.hotline.CheckPriceInRangeTest" />-->
+            <!--<class name="ua.kiev.prog.week2.hotline.BaseTest" />-->
+        <!--</classes>-->
+    <!--</test>-->
 
 </suite>
         <!-- @AfterSuite -->

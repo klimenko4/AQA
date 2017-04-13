@@ -1,20 +1,18 @@
-package ua.kiev.prog.week2.hotline;
+package ua.kiev.prog.week2.hotline.PageObject;
 
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class HotlineHomePage extends BasePage {
 
     private String homePageLink = "http://hotline.ua/";
 
-    public HotlineHomePage(WebDriver driver, WebDriverWait wait) {
+    public HotlineHomePage(WebDriver driver) {
         super(driver);
-        driver.manage().window().maximize();
     }
 
     public HotlineHomePage openUrl(){
@@ -28,11 +26,23 @@ public class HotlineHomePage extends BasePage {
     @FindBy(how = How.ID,using = "doSearch")
     private WebElement searchbutton;
 
+    @FindBy(css = ".reg")
+    private WebElement registerLink;
+
+
+    public RegistrationPage clickOnRegisterLink() {
+        registerLink.click();
+
+        return new RegistrationPage(driver);
+    }
+
     public SearchResultsPage search(String text) {
         searchField.sendKeys(text);
         searchbutton.click();
         return new SearchResultsPage(driver);
     }
+
+
 
 
 }
