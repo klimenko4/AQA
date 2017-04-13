@@ -1,0 +1,10 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="regression">
+
+    <test name="case1">
+        <classes>
+            <class name="ua.kiev.prog.week3.PropertiesTest"/> </classes>
+    </test>
+
+</suite>
