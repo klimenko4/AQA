@@ -1,10 +1,8 @@
 package ua.prog.week2;
 
-import org.junit.Assert;
 import org.junit.Test;
 import ua.prog.fixtures.BaseTest;
 import ua.prog.week2.pagefactory.FormPageWithPF;
-import ua.prog.week2.pageobject.ResultPage;
 
 /**
  * Created by dmytro-mikhieiev on 30.03.17.
@@ -16,10 +14,10 @@ public class PageObjectTest extends BaseTest {
     @Test
     public void fillForm() {
 
-        formPage.openPage().
-                searchField("iphone").
+        formPage.openPage();
+        formPage.searchField("iphone").
                 range().
-                webElements()
+                webElements();
 
 //
 //        formPage.openPage();
@@ -38,9 +36,6 @@ public class PageObjectTest extends BaseTest {
 //        String expectedMessage = "Thank you for submitting the form";
 //
 //        Assert.assertEquals(expectedMessage, headerMessage);
-
-
-
 
 
     }

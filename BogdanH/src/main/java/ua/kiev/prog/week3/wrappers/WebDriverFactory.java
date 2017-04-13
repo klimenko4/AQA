@@ -16,7 +16,7 @@ public class WebDriverFactory {
 
     public static WebDriver getDriver() {
         final String browser = ConfigLoader.getProperty("browser");
-        //System.getProperty("browser");
+        System.getProperty("browser");
 
         if (StringUtils.isEmpty(browser)) {
             throw new IllegalStateException("'browser' property is missing!");
