@@ -1,0 +1,11 @@
+Replace the hardcoded user registration/login data in the dataproviders from the previous assignments with a call to the method that reads all this data from the corresponding tables  in your local database;
+Task breakdown:
+a)Create a corresponding table in the database.
+(e.g. table name = “user_data” , columns = [id,email,nick,passwordb)].
+c)Populate the previously created table with test data.
+d)Read the data from the database in your registration/login dataprovides.
+
+Note:
+a)Create a domain class (domain model) for the user data attributes so that your data providers will return domain objects.
+b)Keep in mind that data providers returns only Object[][] or Iterator<Object[]>. The data fetched(retrieved) from the database
+should be converted to the specified return types ( Object[][] or Iterator<Object[]>).
