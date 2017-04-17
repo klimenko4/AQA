@@ -1,13 +1,18 @@
 package ua.kiev.prog.hotline;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HotLineMainPage {
 
     private WebDriver driver;
+    protected WebDriverWait wait;
 
     @FindBy(id = "searchbox")
     public WebElement searchbox;
@@ -71,6 +76,13 @@ public class HotLineMainPage {
 
     public void loginForAlreadyCreatedUser(String email, String password) {
         logInButton.click();
+        if (driver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor) driver)
+                    .executeScript("var closeLink = document.querySelector('a.close-x'); console.log(closeLink);" +
+                            "closeLink.click();");
+        }
+//        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.xpath("//input[@name = 'login']")));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".cf.pop-up-box.pup-login.cell-768")));
         loginUserInput.sendKeys(email);
         loginPasswordInput.sendKeys(password);
         loginEnterButton.click();
