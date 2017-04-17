@@ -18,6 +18,7 @@ public class RegistrationAndSignInTest extends BaseTest {
 
     @Test(dataProvider = "RegistrationErrorProvider",groups = "registration")
     public void emailAlreadyExistsErrorTest(String email, String errorText) {
+
         RegistrationPage registrationPage = hotlineHomePage.clickOnRegisterLink()
                 .fillInEmail(email)
                 .fillInNickname("nickname")

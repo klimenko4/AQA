@@ -8,7 +8,13 @@ public class PropertiesTest {
 
     @Test
     public void testProperties() {
-        System.out.println(ConfigLoader.getProperty("env.name"));
+
+
+     // System.out.println(System.getProperty("new.my.property"));
+      System.out.println(ConfigLoader.getProperty("env.name"));
+//        System.out.println(System.getProperty("browser"));
+//        System.out.println(System.getProperty("site.url"));
+        //System.out.println(ConfigLoader.getProperty("env.name"));
     }
 
     @Test(groups = "mytest")
