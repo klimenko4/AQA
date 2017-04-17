@@ -10,6 +10,7 @@ import ua.kiev.prog.week1.fixtures.BaseTest;
 
 import java.util.Set;
 
+@SuppressWarnings("ALL")
 public class WebDrverApiTest extends BaseTest {
 
     @Test

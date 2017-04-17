@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.List;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElementLocated;
-
+@SuppressWarnings("ALL")
 public class WebDriverExampleTest {
 
     static WebDriver driver;
@@ -30,6 +29,21 @@ public class WebDriverExampleTest {
         wait = new WebDriverWait(driver, 4);
 
     }
+
+//    private HotLineMainPage mainPage = new Hot (driver);
+
+    @Test
+    public void testHotLine() {
+
+        driver.get("https://hotl.com");
+        WebElement q = driver.findElement(By.name("q"));
+        q.sendKeys("selenide");
+        q.sendKeys(Keys.ENTER);
+        String text = driver.findElement(By.linkText("codeborne/selenide")).getText();
+
+        Assert.assertTrue("codeborne/selenide".equals(text));
+    }
+
 
     @Test
     public void testGitHub() {

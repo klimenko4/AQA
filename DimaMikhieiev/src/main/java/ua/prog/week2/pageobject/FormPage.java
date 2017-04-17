@@ -1,6 +1,5 @@
 package ua.prog.week2.pageobject;
 
-import com.sun.tools.javac.util.List;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -9,9 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 
 import static org.openqa.selenium.By.cssSelector;
 
-/**
- * Created by dmytro-mikhieiev on 30.03.17.
- */
 public class FormPage extends BasePage {
 
     @Override
@@ -28,7 +24,7 @@ public class FormPage extends BasePage {
         return this;
     }
 
-    public FormPage searchData (String searchField) {
+    public FormPage searchData(String searchField) {
         driver.findElement(By.id("searchbox")).sendKeys("iphone");
         new Actions(driver).click().perform();
         return this;

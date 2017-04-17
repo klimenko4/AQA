@@ -13,6 +13,7 @@ import java.util.List;
 
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+@SuppressWarnings("ALL")
 public class WebDriverExampleTest extends BaseTest {
 
 
